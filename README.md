@@ -420,13 +420,13 @@ package main
 import "fmt"
 
 func double(i int) {
-       i = i * 2
+    i = i * 2
 }
 
 func main() {
-       i := 2
-       double(i)
-       fmt.Printf("i = %v\n", i)
+    i := 2
+    double(i)
+    fmt.Printf("i = %v\n", i)
 }
 ```
 
@@ -438,13 +438,13 @@ package main
 import "fmt"
 
 func double(i *int) {
-       *i = *i * 2
+    *i = *i * 2
 }
 
 func main() {
-       i := 2
-       double(&i)
-       fmt.Printf("i = %v\n", i)
+    i := 2
+    double(&i)
+    fmt.Printf("i = %v\n", i)
 }
 ```
 
@@ -469,11 +469,11 @@ func main() {
         width: 4.0,
     }
     fmt.Printf("square has area of %v\n", square.height * square.width)
-}
+}
 ```
 
 * A struct is like a final class in Java.
-* Variables starting with a upper case letter are public, variables starting with lower case letter are package private.
+* Variables starting with an upper case letter are public, variables starting with a lower case letter are package private.
 
 26 Methods
 ----------
@@ -555,7 +555,7 @@ Go has some pre-defined interfaces. The most important ones are:
 
 ```go
 type Stringer interface {
-       String() string
+    String() string
 }
 ```
 
@@ -563,7 +563,7 @@ Like Java's `toString()`
 
 ```go
 type error interface {
-       Error() string
+    Error() string
 }
 ```
 
@@ -578,15 +578,16 @@ The following code:
 
 ```go
 func main() {
-       c := &circle{
-              radius: 2.0,
-       }
-       r := &rectangle{
-              width: 4.0,
-              height: 4.0,
-       }
-       fmt.Printf("Shape 1: %v\n", c)
-       fmt.Printf("Shape 2: %v\n", r)}
+    c := &circle{
+           radius: 2.0,
+    }
+    r := &rectangle{
+           width: 4.0,
+           height: 4.0,
+    }
+    fmt.Printf("Shape 1: %v\n", c)
+    fmt.Printf("Shape 2: %v\n", r)
+}
 ```
 
 Should produce the following output:
@@ -746,15 +747,15 @@ Write a function `combine()` such that
 
 ```go
 func main() {
-       add := func(a, b int) int {
-              return a + b
-       }
-       mult := func(a, b int) int {
-              return a * b
-       }
-       arr := createArray(10)
-       fmt.Printf("add(1..10)=%v\n", combine(arr, add))
-       fmt.Printf("mult(1..10)=%v\n", combine(arr, mult))
+    add := func(a, b int) int {
+            return a + b
+    }
+    mult := func(a, b int) int {
+            return a * b
+    }
+    arr := createArray(10)
+    fmt.Printf("add(1..10)=%v\n", combine(arr, add))
+    fmt.Printf("mult(1..10)=%v\n", combine(arr, mult))
 }
 ```
 
@@ -944,7 +945,7 @@ func main() {
 46 Exercise
 -----------
 
-Include a unique number in each respone:
+Include a unique number in each response:
 
 * First response gets number 1
 * Second response gets number 2
