@@ -6,14 +6,14 @@ Go-Programmierung für Java-Entwickler
 
 * Fabian Stäber, ConSol Software GmbH
 * Java Developer, Gopher
-* Some Go projects on GitHub, like github.com/fstab/grok_exporter
+* Some Go projects on GitHub, like [github.com/fstab/grok_exporter](https://github.com/fstab/grok_exporter)
 
 2 Resources
 -----------
 
-* https://tour.golang.org
-* Alan A. A. Donovan, Brian W. Kernighan: _The Go Programming Language_, Addison-Wesley, 2015
-* Google for 'golang'
+* **Online tutorial:** https://tour.golang.org
+* **Book:** Alan A. A. Donovan, Brian W. Kernighan: _The Go Programming Language_, Addison-Wesley, 2015
+* **Help:** Google keyword for the Go programming language is 'golang'
 
 3 About Go
 ----------
@@ -70,9 +70,9 @@ go help fmt
 The `go` command is more like `mvn` than like `javac`.
 
 ```
-go get ...
-go test ...
-go install ...
+go get ...               <-- download from github, bitbucket, etc.
+go test ...              <-- like 'mvn test'
+go install ...           <-- install binary to $GOPATH/bin
 ```
 
 8 Go Directory Structure
@@ -315,7 +315,7 @@ Go's `nil` is like Java's `null`.
 19 Ignoring Return Values
 -------------------------
 
-In go it's a _syntax error_ if a varible is decleared but not used:
+In go it's a _syntax error_ if a variable is declared but not used:
 
 ```go
 func main() {
@@ -324,7 +324,7 @@ func main() {
 }
 ```
 
-Syntax error, because variable `product` is defined but not used.
+Syntax error, because variable `product` is declared but not used.
 
 To explicitly ignore a return value, use `_`:
 
@@ -600,7 +600,7 @@ Shape 2: rectangle with width 4, height 4, and area 16
 32 Functional Programming
 -------------------------
 
-Define an anonymous function and assign it to a variable
+Example 1: Define an anonymous function and assign it to a variable
 
 ```go
 package main
@@ -615,7 +615,7 @@ func main() {
 }
 ```
 
-Pass a function as parameter to another function
+Example 2: Pass a function as parameter to another function
 
 ```go
 package main
@@ -852,7 +852,7 @@ Re-write the channel examples with two go-routines:
 * One producer routine producing numbers
 * One consumer routine printing numbers to stdout
 
-Terminology: A function called with `go ...` is called a go-routine.
+Terminology: A function running as a background thread is a go-routine.
 
 41 Waiting for termination
 --------------------------
