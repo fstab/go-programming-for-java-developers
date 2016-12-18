@@ -511,13 +511,13 @@ Hint: `go doc math.Pi`
 28 String Concatenation
 -----------------------
 
-Java:
+Java: Implicit conversion from float64 to String
 
 ```java
 return "the area is " + s.area();
 ```
 
-Go:
+Go: Explicit string formatting
 
 ```go
 return fmt.Sprintf("area is %v", s.area())
