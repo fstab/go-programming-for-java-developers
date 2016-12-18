@@ -1048,9 +1048,7 @@ func main() {
     var prev, cur = 0, 1
     for i := 0; i < n; i++ {
         fmt.Printf(" %v", cur)
-        next := prev + cur
-        prev = cur
-        cur = next
+        prev, cur = cur, prev + cur
     }
     fmt.Print("\n")
 }
