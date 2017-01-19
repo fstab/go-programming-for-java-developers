@@ -634,50 +634,50 @@ func main() {
 }
 ```
 
-33 Arrays
----------
+33 Arrays & Slices
+------------------
 
-Java:
+Java Arrays:
 
 ```java
 int size = 10;
 int[] arr = new int[size];
 ```
 
-Go:
+Go Slices:
 
 ```go
 size := 10
-arr := make([]int, size)
+slice := make([]int, size)
 ```
 
-Iterate over an array:
+Iterate over a slice:
 
 ```go
-for i, val := range arr {
-    fmt.Printf("arr[%v] = %v\n", i, val)
+for i, val := range slice {
+    fmt.Printf("slice[%v] = %v\n", i, val)
 }
 ```
 
-34 Array Example
-----------------
+34 Arrays & Slices Example
+--------------------------
 
 ```go
 package main
 
 import "fmt"
 
-func createArray(size int) []int {
-    a := make([]int, size)
+func createSlice(size int) []int {
+    slice := make([]int, size)
     for i := 0; i < size; i++ {
-        a[i] = i + 1
+        slice[i] = i + 1
     }
-    return a
+    return slice
 }
 
-func applyFunction(arr []int, f func(int) int) {
-    for i, n := range arr {
-        arr[i] = f(n)
+func applyFunction(slice []int, f func(int) int) {
+    for i, n := range slice {
+        slice[i] = f(n)
     }
 }
 
@@ -685,10 +685,10 @@ func main() {
     f := func(n int) int {
         return 2 * n
     }
-    arr := createArray(10)
-    fmt.Printf("%v\n", arr)
-    applyFunction(arr, f)
-    fmt.Printf("%v\n", arr)
+    slice := createSlice(10)
+    fmt.Printf("%v\n", slice)
+    applyFunction(slice, f)
+    fmt.Printf("%v\n", slice)
 }
 ```
 
@@ -699,17 +699,17 @@ Result:
 [2 4 6 8 10 12 14 16 18 20]
 ```
 
-35 Slices
----------
+35 Index Ranges
+---------------
 
 Example 1:
 
 ```go
-arr := createArray(10)
-fmt.Printf("%v\n", arr)
-slice := arr[3:7]
+slice := createSlice(10)
+fmt.Printf("%v\n", slice)
+slice := slice[3:7]
 applyFunction(slice, f)
-fmt.Printf("%v\n", arr)
+fmt.Printf("%v\n", slice)
 ```
 
 Result: 
@@ -722,14 +722,14 @@ Result:
 Example 2:
 
 ```go
-arr := createArray(10)
-fmt.Printf("%v\n", arr)
-firstHalf := arr[:len(arr)/2]
+slice := createSlice(10)
+fmt.Printf("%v\n", slice)
+firstHalf := slice[:len(slice)/2]
 applyFunction(firstHalf, f)
-fmt.Printf("%v\n", arr)
-secondHalf := arr[len(arr)/2:]
+fmt.Printf("%v\n", slice)
+secondHalf := slice[len(slice)/2:]
 applyFunction(secondHalf, f)
-fmt.Printf("%v\n", arr)
+fmt.Printf("%v\n", slice)
 ```
 
 Result:
@@ -753,9 +753,9 @@ func main() {
     mult := func(a, b int) int {
             return a * b
     }
-    arr := createArray(10)
-    fmt.Printf("add(1..10)=%v\n", combine(arr, add))
-    fmt.Printf("mult(1..10)=%v\n", combine(arr, mult))
+    slice := createSlice(10)
+    fmt.Printf("add(1..10)=%v\n", combine(slice, add))
+    fmt.Printf("mult(1..10)=%v\n", combine(slice, mult))
 }
 ```
 
@@ -998,10 +998,10 @@ func counter(w http.ResponseWriter, r *http.Request) {
 
 Topics covered in this workshop:
 
-* Control flow: if/else, for
+* control flow: if/else, for
 * functions, error handling, deferred methods
 * pointers, structs, methods, interfaces
-* arrays/slices
+* arrays & slices
 * multithreading
 
 Solution to Exercise 14
@@ -1174,33 +1174,33 @@ package main
 import "fmt"
 
 // for loop
-func combine1(arr []int, f func(int, int) int) int {
-    result := arr[0]
-    for i := 1; i < len(arr); i++ {
-        result = f(result, arr[i])
+func combine1(slice []int, f func(int, int) int) int {
+    result := slice[0]
+    for i := 1; i < len(slice); i++ {
+        result = f(result, slice[i])
     }
     return result
 }
 
 // recursive
-func combine2(arr []int, f func(int, int) int) int {
-    if len(arr) == 1 {
-        return arr[0]
+func combine2(slice []int, f func(int, int) int) int {
+    if len(slice) == 1 {
+        return slice[0]
     }
-    if len(arr) == 2 {
-        return f(arr[0], arr[1])
+    if len(slice) == 2 {
+        return f(slice[0], slice[1])
     }
-    left := combine2(arr[:len(arr)/2], f)
-    right := combine2(arr[len(arr)/2:], f)
+    left := combine2(slice[:len(slice)/2], f)
+    right := combine2(slice[len(slice)/2:], f)
     return f(left, right)
 }
 
-func createArray(size int) []int {
-    a := make([]int, size)
+func createSlice(size int) []int {
+    slice := make([]int, size)
     for i:=0; i<size; i++ {
-        a[i] = i+1
+        slice[i] = i+1
     }
-    return a
+    return slice
 }
 
 func main() {
@@ -1210,14 +1210,14 @@ func main() {
     mult := func(a, b int) int {
         return a * b
     }
-    arr := createArray(10)
+    slice := createSlice(10)
     fmt.Printf("for loop:\n")
-    fmt.Printf("add(1..10)=%v\n", combine1(arr, add))
-    fmt.Printf("mult(1..10)=%v\n", combine1(arr, mult))
+    fmt.Printf("add(1..10)=%v\n", combine1(slice, add))
+    fmt.Printf("mult(1..10)=%v\n", combine1(slice, mult))
 
     fmt.Printf("\nrecursive:\n")
-    fmt.Printf("add(1..10)=%v\n", combine2(arr, add))
-    fmt.Printf("mult(1..10)=%v\n", combine2(arr, mult))
+    fmt.Printf("add(1..10)=%v\n", combine2(slice, add))
+    fmt.Printf("mult(1..10)=%v\n", combine2(slice, mult))
 }
 ```
 
