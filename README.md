@@ -1,5 +1,7 @@
-Go-Programmierung für Java-Entwickler
-=====================================
+Go Programming for Java Developers
+==================================
+
+Notes for my [Go](https://golang.org) programming workshop.
 
 1 About Me
 ----------
@@ -13,7 +15,9 @@ Go-Programmierung für Java-Entwickler
 
 * **Online tutorial:** https://tour.golang.org
 * **Book:** Alan A. A. Donovan, Brian W. Kernighan: _The Go Programming Language_, Addison-Wesley, 2015
-* **Help:** Google keyword for the Go programming language is 'golang'
+* **Google:** Google keyword for the Go programming language is 'golang'
+* **This text:** [https://github.com/fstab/go-programming-for-java-developers](https://github.com/fstab/go-programming-for-java-developers)
+* **Slides:** [https://goo.gl/P7XAXn](https://goo.gl/P7XAXn) (docs.google.com)
 
 3 About Go
 ----------
@@ -699,16 +703,16 @@ Result:
 [2 4 6 8 10 12 14 16 18 20]
 ```
 
-35 Index Ranges
----------------
+35 Slicing
+----------
 
 Example 1:
 
 ```go
 slice := createSlice(10)
 fmt.Printf("%v\n", slice)
-slice := slice[3:7]
-applyFunction(slice, f)
+part := slice[3:7]
+applyFunction(part, f)
 fmt.Printf("%v\n", slice)
 ```
 
