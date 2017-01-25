@@ -770,7 +770,7 @@ add(1..10)=55
 mult(1..10)=3628800
 ```
 
-Implement `combine()` two times: one time with a `for` loop, and one time recursively without `for`.
+Bonus task: Implement two versions of `combine()`: one with a `for` loop, and one recursive version without using `for`.
 
 37 Multithreading
 -----------------
