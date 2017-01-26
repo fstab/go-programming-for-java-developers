@@ -397,7 +397,7 @@ func main() {
         if err != nil {
             break
         }
-        fmt.Printf("%v\n", line)
+        fmt.Printf("%v", line)
     }
 }
 ```
